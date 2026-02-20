@@ -35,7 +35,7 @@ export const Reservas = () => {
   const horaActualStr = ahora.getHours().toString().padStart(2, '0') + ":" + ahora.getMinutes().toString().padStart(2, '0');
 
   useEffect(() => {
-    emailjs.init("LpyYc4QvTDEUo4kZs");
+    emailjs.init(import.meta.env.VITE_EMAILJS_PUBLIC_KEY);
     fetchServicios();
   }, []);
 
@@ -73,7 +73,10 @@ export const Reservas = () => {
       hora: seleccion.hora
     };
 
-    return emailjs.send('service_lx0v52d', 'template_5et2dhp', templateParams);
+    return emailjs.send(
+      import.meta.env.VITE_EMAILJS_SERVICE_ID, 
+      import.meta.env.VITE_EMAILJS_TEMPLATE_ID, 
+      templateParams);
   };
 
   const guardarReserva = async () => {
