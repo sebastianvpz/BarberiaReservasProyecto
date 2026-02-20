@@ -1,0 +1,476 @@
+/* =========================================
+   1. RESET Y VARIABLES (THEME DARK & GOLD)
+   ========================================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --gold: #c5a059;       /* Dorado elegante */
+  --gold-hover: #e2b86a;
+  --dark-bg: #0a0a0a;    /* Negro profundo */
+  --dark-card: #161616;  /* Gris muy oscuro para tarjetas */
+  --text-light: #ffffff;
+  --text-muted: #a0a0a0;
+  --border: #333333;
+}
+
+#root {
+  width: 100%;
+}
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background-color: var(--dark-bg);
+  color: var(--text-light);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* =========================================
+   2. ESTRUCTURA GLOBAL (STICKY FOOTER)
+   ========================================= */
+.app-main {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1; /* Empuja el footer al fondo */
+  width: 100%;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* =========================================
+   3. NAVBAR (ELEGANT DARK)
+   ========================================= */
+.navbar {
+  width: 100%;
+  height: 90px;
+  background: rgba(10, 10, 10, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  justify-content: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.nav-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.logo-gold {
+  font-size: 1.8rem;
+  font-weight: 900;
+  color: var(--gold);
+  text-decoration: none;
+  letter-spacing: 2px;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 3rem;
+}
+
+.nav-links a {
+  color: var(--text-light);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover {
+  color: var(--gold);
+}
+
+/* =========================================
+   4. COMPONENTES REUTILIZABLES
+   ========================================= */
+
+/* Botón Dorado */
+.btn-gold {
+  display: inline-block;
+  background-color: var(--gold);
+  color: #000;
+  padding: 1rem 2.5rem;
+  font-weight: 800;
+  text-decoration: none;
+  border-radius: 4px;
+  letter-spacing: 2px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+}
+
+.btn-gold:hover {
+  background-color: var(--gold-hover);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(197, 160, 89, 0.3);
+}
+
+/* Tarjetas de Servicio */
+.service-card-mini {
+  background: var(--dark-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+  transition: border-color 0.3s;
+}
+
+.service-card-mini:hover {
+  border-color: var(--gold);
+}
+
+.service-card-mini img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  filter: grayscale(100%);
+  transition: 0.5s;
+}
+
+.service-card-mini:hover img {
+  filter: grayscale(0%);
+}
+
+.footer {
+  width: 100%;
+  background: #050505;
+  border-top: 1px solid var(--border);
+  padding: 3rem 0;
+  text-align: center;
+}
+
+.footer p {
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+}
+
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.footer-brand p {
+  color: var(--text-muted);
+  margin-top: 0.5rem;
+  font-style: italic;
+}
+
+.footer-social {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.footer-social a {
+  color: var(--text-light);
+  transition: color 0.3s, transform 0.3s;
+}
+
+.footer-social a:hover {
+  color: var(--gold);
+  transform: translateY(-3px);
+}
+
+.footer-bottom {
+  border-top: 1px solid var(--border);
+  padding-top: 2rem;
+}
+/* Indicador de pasos */
+.steps-indicator {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  margin-bottom: 4rem;
+}
+
+.step {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  color: var(--text-muted);
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+}
+
+.step span {
+  width: 30px;
+  height: 30px;
+  border: 1px solid var(--text-muted);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.step.active { color: var(--gold); }
+.step.active span { border-color: var(--gold); background: rgba(197, 160, 89, 0.1); }
+
+/* Lista de servicios en el proceso de reserva */
+.services-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.service-card-booking {
+  background: var(--dark-card);
+  border: 1px solid var(--border);
+  padding: 1.5rem;
+  border-radius: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.service-card-booking:hover {
+  border-color: #555;
+  transform: translateX(10px);
+}
+
+.service-card-booking.selected {
+  border-color: var(--gold);
+  background: rgba(197, 160, 89, 0.05);
+}
+
+.service-info h3 { font-size: 1.2rem; margin-bottom: 0.2rem; }
+.service-info p { color: var(--text-muted); font-size: 0.9rem; }
+
+.step-title {
+  text-align: center;
+  margin-bottom: 2.5rem;
+  color: var(--gold);
+  font-size: 1.8rem;
+}
+
+.datetime-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 3rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Input de Fecha */
+.input-custom {
+  width: 100%;
+  padding: 1rem;
+  background: var(--dark-card);
+  border: 1px solid var(--border);
+  color: white;
+  border-radius: 8px;
+  margin-top: 1rem;
+  outline: none;
+}
+
+.input-custom:focus {
+  border-color: var(--gold);
+}
+
+/* Grilla de Horarios */
+.time-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: 0.8rem;
+  margin-top: 1rem;
+}
+
+.time-slot {
+  background: var(--dark-card);
+  border: 1px solid var(--border);
+  color: white;
+  padding: 0.8rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-weight: 600;
+}
+
+.time-slot:hover {
+  border-color: var(--gold);
+}
+
+.time-slot.selected {
+  background: var(--gold);
+  color: black;
+  border-color: var(--gold);
+}
+
+/* Botón Volver */
+.btn-back-minimal {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.btn-back-minimal:hover {
+  color: white;
+}
+
+.booking-actions {
+  text-align: center;
+  margin-top: 3rem;
+}
+
+/* Animación simple */
+.anim-fade-in {
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 768px) {
+  .datetime-wrapper { grid-template-columns: 1fr; }
+}
+
+/* Estilo para horario ocupado */
+.time-slot.disabled {
+  background: #111;
+  border-color: #222;
+  color: #444;
+  cursor: not-allowed;
+  text-decoration: line-through;
+}
+
+.time-slot.disabled:hover {
+  border-color: #222;
+}
+
+/* Estilos para el formulario */
+.form-group {
+  margin-bottom: 1.5rem;
+  text-align: left;
+}
+
+.form-group label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  color: var(--gold);
+  margin-bottom: 0.5rem;
+}
+
+.resumen-final {
+  background: var(--dark-card);
+  padding: 1.5rem;
+  border-radius: 8px;
+  border-left: 4px solid var(--gold);
+  margin: 2rem 0;
+  text-align: left;
+}
+
+.resumen-final h4 {
+  margin-bottom: 0.5rem;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+/* Grilla de Contacto */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 4rem;
+  margin-top: 3rem;
+  align-items: start;
+}
+
+.info-item {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.info-item h3 {
+  color: var(--gold);
+  font-size: 1.1rem;
+  margin-bottom: 0.3rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.info-item p {
+  color: var(--text-muted);
+  font-size: 1rem;
+}
+
+.icon-gold {
+  color: var(--gold);
+  background: rgba(197, 160, 89, 0.1);
+  padding: 1rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: fit-content;
+}
+
+.map-container {
+  box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+  border: 1px solid var(--border);
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+/* Responsivo para móviles */
+@media (max-width: 900px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+}
+
+.skeleton {
+  background: linear-gradient(90deg, #1a1a1a 25%, #222 50%, #1a1a1a 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 12px;
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+.skeleton-card {
+  height: 80px;
+  width: 100%;
+  margin-bottom: 1rem;
+}
